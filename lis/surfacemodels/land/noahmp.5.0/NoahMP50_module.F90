@@ -551,6 +551,16 @@ module NoahMP50_module
      real               :: chuc
      real               :: chv2
      real               :: chb2
+     
+     !for GEOS
+     real               :: z0
+     real               :: znt
+     real               :: zpd
+     real               :: ustarveg
+     real               :: ustarbare
+     real               :: taux
+     real               :: tauy
+     real               :: rhoair
 
      !for 557WW
      real :: tair_agl_min
