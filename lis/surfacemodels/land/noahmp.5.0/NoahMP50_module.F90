@@ -561,6 +561,7 @@ module NoahMP50_module
      real               :: taux
      real               :: tauy
      real               :: rhoair
+     real               :: qsfc
 
      !for 557WW
      real :: tair_agl_min
