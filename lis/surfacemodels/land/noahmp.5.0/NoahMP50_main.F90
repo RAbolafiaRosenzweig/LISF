@@ -1367,7 +1367,7 @@ subroutine NoahMP50_main(n)
 
 	  call LIS_diagnoseSurfaceOutputVar(n, t, LIS_MOC_QSFC, &
              value = NoahMP50_struc(n)%noahmp50(t)%qsfc, &
-             vlevel=1, unit="kg/kg“, direction="-", &
+             vlevel=1, unit="kg/kg", direction="-", &
              surface_type = LIS_rc%lsm_index)
 
         ! Added water balance change terms
