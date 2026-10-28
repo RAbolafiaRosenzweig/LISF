@@ -577,7 +577,7 @@ subroutine NoahMP50_main(n)
         NoahMP50_struc(n)%noahmp50(t)%taux       = NoahmpIO%tauxxy(1,1)
         NoahMP50_struc(n)%noahmp50(t)%tauy       = NoahmpIO%tauyyxy(1,1)
         NoahMP50_struc(n)%noahmp50(t)%rhoair     = NoahmpIO%rhoairxy(1,1)
-        NoahMP50_struc(n)%noahmp50(t)%qsfc       = NoahmpIO%qsfc(1,1)
+        NoahMP50_struc(n)%noahmp50(t)%qsfcmean   = NoahmpIO%qsfc(1,1)
 
         ! additional accumulated variables
         NoahMP50_struc(n)%noahmp50(t)%accssoil     = NoahmpIO%ACC_SSOILXY(1,1)
@@ -1365,9 +1365,9 @@ subroutine NoahMP50_main(n)
              vlevel=1, unit="kg m-3", direction="-", &
              surface_type = LIS_rc%lsm_index)
 
-	  call LIS_diagnoseSurfaceOutputVar(n, t, LIS_MOC_QSFC, &
-             value = NoahMP50_struc(n)%noahmp50(t)%qsfc, &
-             vlevel=1, unit="kg/kg", direction="-", &
+        call LIS_diagnoseSurfaceOutputVar(n, t, LIS_MOC_QSFCMEAN, &
+             value = NoahMP50_struc(n)%noahmp50(t)%qsfcmean, &
+             vlevel=1, unit="kg kg-1", direction="-", &
              surface_type = LIS_rc%lsm_index)
 
         ! Added water balance change terms
