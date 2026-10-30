@@ -267,6 +267,10 @@ TauX:         0  N/m2    -    1 0 0 1 124 10      # Wind stress east-west (N/m2)
 TauY:         0  N/m2    -    1 0 0 1 125 10      # Wind stress north-south (N/m2)
 RhoAir:       0  kg/m3   -    1 0 0 1 089 10      # Air density at reference height (kg/m3)
 QSFCmean:     0  kg/kg   -    1 0 0 1 051  10      # mean surface specific humidity (kg/kg)
+AlbDirVis:    0  -       -    1 0 0 1 084 10      # Surface albedo, direct beam, visible (-)
+AlbDirNIR:    0  -       -    1 0 0 1 084 10      # Surface albedo, direct beam, near-infrared (-)
+AlbDifVis:    0  -       -    1 0 0 1 084 10      # Surface albedo, diffuse, visible (-)
+AlbDifNIR:    0  -       -    1 0 0 1 084 10      # Surface albedo, diffuse, near-infrared (-)
 
 #Parameters
 Landmask:     0  -       -    0 0 0 1  81 1       # Land mask (0 - Water, 1 - Land)

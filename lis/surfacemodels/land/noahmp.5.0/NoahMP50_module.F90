@@ -359,6 +359,28 @@ module NoahMP50_module
 !     veg 2m exchange coefficient. unit: -
 !   \item[chb2]
 !     bare 2m exchange coefficient. unit: -
+!   \item[z0]
+!     surface roughness length (momentum). unit: m
+!   \item[znt]
+!     thermal roughness length output to atm. unit: m
+!   \item[zpd]
+!     zero-plane displacement height. unit: m
+!   \item[ustarveg]
+!     friction velocity over vegetated surface. unit: m/s
+!   \item[ustarbare]
+!     friction velocity over bare ground. unit: m/s
+!   \item[taux]
+!     eastward (zonal) surface wind stress. unit: N/m2
+!   \item[tauy]
+!     northward (meridional) surface wind stress. unit: N/m2
+!   \item[rhoair]
+!     surface air density. unit: kg/m3
+!   \item[qsfcmean]
+!     mean surface specific humidity. unit: kg/kg
+!   \item[albsfcdir]
+!     surface albedo, direct beam (1=visible, 2=near-infrared). unit: -
+!   \item[albsfcdif]
+!     surface albedo, diffuse (1=visible, 2=near-infrared). unit: -
 !   \end{description}
 !
 ! !REVISION HISTORY:
@@ -562,6 +584,8 @@ module NoahMP50_module
      real               :: tauy
      real               :: rhoair
      real               :: qsfcmean
+     real, pointer      :: albsfcdir(:)   ! surface albedo direct  (1=vis, 2=nir)
+     real, pointer      :: albsfcdif(:)   ! surface albedo diffuse (1=vis, 2=nir) 
 
      !for 557WW
      real :: tair_agl_min

@@ -978,7 +978,7 @@ module LIS_histDataMod
     integer ::  LIS_MOC_TAUX        = -9999
     integer ::  LIS_MOC_TAUY        = -9999
     integer ::  LIS_MOC_RHOAIR      = -9999
-    integer ::  LIS_MOC_QSFCMEAN      = -9999
+    integer ::  LIS_MOC_QSFCMEAN    = -9999
 !  <- end Noah MP  ->
 
 !  <- AquaCrop ->

@@ -578,6 +578,8 @@ subroutine NoahMP50_main(n)
         NoahMP50_struc(n)%noahmp50(t)%tauy       = NoahmpIO%tauyyxy(1,1)
         NoahMP50_struc(n)%noahmp50(t)%rhoair     = NoahmpIO%rhoairxy(1,1)
         NoahMP50_struc(n)%noahmp50(t)%qsfcmean   = NoahmpIO%qsfc(1,1)
+        NoahMP50_struc(n)%noahmp50(t)%albsfcdir(:) = NoahmpIO%ALBSFCDIRXY(1,:,1)
+        NoahMP50_struc(n)%noahmp50(t)%albsfcdif(:) = NoahmpIO%ALBSFCDIFXY(1,:,1)
 
         ! additional accumulated variables
         NoahMP50_struc(n)%noahmp50(t)%accssoil     = NoahmpIO%ACC_SSOILXY(1,1)
@@ -1370,6 +1372,34 @@ subroutine NoahMP50_main(n)
              vlevel=1, unit="kg kg-1", direction="-", &
              surface_type = LIS_rc%lsm_index)
 
+        ! output variable: albsfcdir(1) (unit=-). *** surface albedo,
+        !  direct beam, visible band
+        call LIS_diagnoseSurfaceOutputVar(n, t, LIS_MOC_ALBEDO_DIR_V, &
+             value = NoahMP50_struc(n)%noahmp50(t)%albsfcdir(1), &
+             vlevel=1, unit="-", direction="-", &
+             surface_type = LIS_rc%lsm_index)
+
+        ! output variable: albsfcdir(2) (unit=-). *** surface albedo,
+        !  direct beam, near-infrared band
+        call LIS_diagnoseSurfaceOutputVar(n, t, LIS_MOC_ALBEDO_DIR_N, &
+             value = NoahMP50_struc(n)%noahmp50(t)%albsfcdir(2), &
+             vlevel=1, unit="-", direction="-", &
+             surface_type = LIS_rc%lsm_index)
+
+        ! output variable: albsfcdif(1) (unit=-). *** surface albedo,
+        !  diffuse, visible band
+        call LIS_diagnoseSurfaceOutputVar(n, t, LIS_MOC_ALBEDO_DIF_V, &
+             value = NoahMP50_struc(n)%noahmp50(t)%albsfcdif(1), &
+             vlevel=1, unit="-", direction="-", &
+             surface_type = LIS_rc%lsm_index)
+
+        ! output variable: albsfcdif(2) (unit=-). *** surface albedo,
+        !  diffuse, near-infrared band
+        call LIS_diagnoseSurfaceOutputVar(n, t, LIS_MOC_ALBEDO_DIF_N, &
+             value = NoahMP50_struc(n)%noahmp50(t)%albsfcdif(2), &
+             vlevel=1, unit="-", direction="-", &
+             surface_type = LIS_rc%lsm_index)
+
         ! Added water balance change terms
         endsm = 0.0
         do i = 1,NoahmpIO%nsoil
@@ -1390,6 +1420,7 @@ subroutine NoahMP50_main(n)
              startint),                                 &
              vlevel=1,unit="kg m-2",direction="INC",           &
              surface_type=LIS_rc%lsm_index)
+
 ! For now, the ALMA standard does not provide a variable for the
 ! change in groundwater storage.  Instead, temporarily writing it
 ! to the DELSURFSTOR (which is the change in surface water storage).
