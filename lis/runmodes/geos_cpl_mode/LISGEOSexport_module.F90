@@ -1,0 +1,158 @@
+!-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
+! NASA Goddard Space Flight Center
+! Land Information System Framework (LISF)
+! Version 7.8
+!
+! Copyright (c) 2026 United States Government as represented by the
+! Administrator of the National Aeronautics and Space Administration.
+! All Rights Reserved.
+!-------------------------END NOTICE -- DO NOT EDIT-----------------------
+module LISGEOSexport_module
+! 
+!BOP
+! !MODULE: LISGEOSexport_module
+! 
+! !DESCRIPTION: 
+!   Defines the export state variables from LIS
+! 
+! !REVISION HISTORY: 
+! 9 Nov 2005: Sujay Kumar, Initial Specification
+!
+! !USES: 
+!EOP
+ 
+  PRIVATE
+  
+  type, public :: lisgeosexport
+     ! --- Standard/Original LIS 2D Export Arrays ---
+     real, allocatable :: avgsurft(:,:)
+     real, allocatable :: qh(:,:)
+     real, allocatable :: eta_kinematic(:,:)
+     real, allocatable :: qle(:,:)
+     real, allocatable :: qg(:,:)
+     real, allocatable :: rootmoist(:,:)
+     real, allocatable :: soilm(:,:)
+     real, allocatable :: qs(:,:)
+     real, allocatable :: qsb(:,:)
+     real, allocatable :: albedo(:,:)
+     real, allocatable :: znt(:,:)
+     real, allocatable :: snocvr(:,:)
+     real, allocatable :: q1(:,:)
+     real, allocatable :: snow(:,:)
+     real, allocatable :: cmc(:,:)
+     real, allocatable :: qsm(:,:)
+     real, allocatable :: chs2(:,:)
+     real, allocatable :: cqs2(:,:)
+     real, allocatable :: smc1(:,:)
+     real, allocatable :: smc2(:,:)
+     real, allocatable :: smc3(:,:)
+     real, allocatable :: smc4(:,:)
+
+     ! --- New GEOS Coupling 2D Export Arrays ---
+     real, allocatable :: rhos(:,:)
+     real, allocatable :: totalrunoff(:,:)
+     real, allocatable :: qh_shout(:,:)
+     real, allocatable :: ch_f(:,:)
+     real, allocatable :: soilmoist_rz(:,:)
+     real, allocatable :: qair_t2m(:,:)
+     real, allocatable :: snowdepth_sca(:,:)
+     real, allocatable :: roughness_f(:,:)
+     real, allocatable :: albedovisdir(:,:)
+     real, allocatable :: albedonirdir(:,:)
+     real, allocatable :: albedovisdif(:,:)
+     real, allocatable :: albedonirdif(:,:)
+     real, allocatable :: z0(:,:)
+     real, allocatable :: zpd(:,:)
+     real, allocatable :: ustarveg(:,:)
+     real, allocatable :: ustarbare(:,:)
+     real, allocatable :: taux(:,:)
+     real, allocatable :: tauy(:,:)
+     real, allocatable :: rtmass(:,:)
+     real, allocatable :: stmass(:,:)
+     real, allocatable :: wood(:,:)
+     real, allocatable :: stblcp(:,:)
+     real, allocatable :: fastcp(:,:)
+     real, allocatable :: lai(:,:)
+     real, allocatable :: sai(:,:)
+
+     ! --- Standard/Original LIS 1D Tile Arrays ---
+     real, allocatable :: avgsurft_t(:)
+     real, allocatable :: qh_t(:)
+     real, allocatable :: eta_kinematic_t(:)
+     real, allocatable :: qle_t(:)
+     real, allocatable :: qg_t(:)
+     real, allocatable :: rootmoist_t(:)
+     real, allocatable :: soilm_t(:)
+     real, allocatable :: qs_t(:)
+     real, allocatable :: qsb_t(:)
+     real, allocatable :: albedo_t(:)
+     real, allocatable :: znt_t(:)
+     real, allocatable :: snocvr_t(:)
+     real, allocatable :: q1_t(:)
+     real, allocatable :: snow_t(:)
+     real, allocatable :: cmc_t(:)
+     real, allocatable :: qsm_t(:)
+     real, allocatable :: chs2_t(:)
+     real, allocatable :: cqs2_t(:)
+     real, allocatable :: smc1_t(:)
+     real, allocatable :: smc2_t(:)
+     real, allocatable :: smc3_t(:)
+     real, allocatable :: smc4_t(:)
+     real, allocatable :: stc1_t(:)
+     real, allocatable :: stc2_t(:)
+     real, allocatable :: stc3_t(:)
+     real, allocatable :: stc4_t(:)     
+     real, allocatable :: sh2o1_t(:)
+     real, allocatable :: sh2o2_t(:)
+     real, allocatable :: sh2o3_t(:)
+     real, allocatable :: sh2o4_t(:)
+     real, allocatable :: xland_t(:)
+     real, allocatable :: emiss_t(:)
+     real, allocatable :: xice_t(:)
+     real, allocatable :: lispor_t(:)
+     real, allocatable :: snowh_t(:)
+     real, allocatable :: relsmc1_t(:)
+     real, allocatable :: relsmc2_t(:)
+     real, allocatable :: relsmc3_t(:)
+     real, allocatable :: relsmc4_t(:)
+
+     ! --- New GEOS Coupling 1D Tile Arrays ---
+     real, allocatable :: rhos_t(:)
+     real, allocatable :: totalrunoff_t(:)
+     real, allocatable :: qh_shout_t(:)
+     real, allocatable :: ch_f_t(:)
+     real, allocatable :: soilmoist_rz_t(:)
+     real, allocatable :: qair_t2m_t(:)
+     real, allocatable :: snowdepth_sca_t(:)
+     real, allocatable :: roughness_f_t(:)
+     real, allocatable :: albedovisdir_t(:)
+     real, allocatable :: albedonirdir_t(:)
+     real, allocatable :: albedovisdif_t(:)
+     real, allocatable :: albedonirdif_t(:)
+     real, allocatable :: z0_t(:)
+     real, allocatable :: zpd_t(:)
+     real, allocatable :: ustarveg_t(:)
+     real, allocatable :: ustarbare_t(:)
+     real, allocatable :: taux_t(:)
+     real, allocatable :: tauy_t(:)
+     real, allocatable :: rtmass_t(:)
+     real, allocatable :: stmass_t(:)
+     real, allocatable :: wood_t(:)
+     real, allocatable :: stblcp_t(:)
+     real, allocatable :: fastcp_t(:)
+     real, allocatable :: lai_t(:)
+     real, allocatable :: sai_t(:)
+
+#ifdef GEOS_HYDRO
+     real, allocatable :: infxsrt_t(:)
+     real, allocatable :: soldrain_t(:)
+#endif
+#ifdef PARFLOW
+     real, allocatable :: wtrflx1_t(:)
+     real, allocatable :: wtrflx2_t(:)
+     real, allocatable :: wtrflx3_t(:)
+     real, allocatable :: wtrflx4_t(:)
+#endif
+  end type lisgeosexport
+
+end module LISGEOSexport_module
