@@ -47,6 +47,23 @@ module LISGEOSexport_module
      real, allocatable :: smc2(:,:)
      real, allocatable :: smc3(:,:)
      real, allocatable :: smc4(:,:)
+     real, allocatable :: stc1(:,:)
+     real, allocatable :: stc2(:,:)
+     real, allocatable :: stc3(:,:)
+     real, allocatable :: stc4(:,:)
+     real, allocatable :: snowh(:,:)
+     real, allocatable :: lispor(:,:)
+     real, allocatable :: emiss(:,:)
+     real, allocatable :: xice(:,:)
+     real, allocatable :: sh2o1(:,:)
+     real, allocatable :: sh2o2(:,:)
+     real, allocatable :: sh2o3(:,:)
+     real, allocatable :: sh2o4(:,:)
+     real, allocatable :: relsmc1(:,:)
+     real, allocatable :: relsmc2(:,:)
+     real, allocatable :: relsmc3(:,:)
+     real, allocatable :: relsmc4(:,:)
+     real, allocatable :: xland(:,:)
 
      ! --- New GEOS Coupling 2D Export Arrays ---
      real, allocatable :: rhos(:,:)
@@ -144,10 +161,16 @@ module LISGEOSexport_module
      real, allocatable :: sai_t(:)
 
 #ifdef GEOS_HYDRO
+     real, allocatable :: infxsrt(:,:)
+     real, allocatable :: soldrain(:,:)
      real, allocatable :: infxsrt_t(:)
      real, allocatable :: soldrain_t(:)
 #endif
 #ifdef PARFLOW
+     real, allocatable :: wtrflx1(:,:)
+     real, allocatable :: wtrflx2(:,:)
+     real, allocatable :: wtrflx3(:,:)
+     real, allocatable :: wtrflx4(:,:)
      real, allocatable :: wtrflx1_t(:)
      real, allocatable :: wtrflx2_t(:)
      real, allocatable :: wtrflx3_t(:)

@@ -28,6 +28,7 @@ module LISGEOSGridCompMod
 
   public :: LISGEOS_alloc_states
   public :: LISGEOS_reset_states
+  public :: LISGEOS_dealloc_states
 
   public :: LISGEOS_import
   public :: LISGEOS_export
@@ -321,17 +322,105 @@ module LISGEOSGridCompMod
          LISGEOS_export(n)%lai_t = LIS_rc%udef
          LISGEOS_export(n)%sai_t = LIS_rc%udef
 
+         ! Export states - 2D Grid Arrays
+         LISGEOS_export(n)%avgsurft = LIS_rc%udef
+         LISGEOS_export(n)%qh = LIS_rc%udef
+         LISGEOS_export(n)%eta_kinematic = LIS_rc%udef
+         LISGEOS_export(n)%qle = LIS_rc%udef
+         LISGEOS_export(n)%qg = LIS_rc%udef
+         LISGEOS_export(n)%albedo = LIS_rc%udef
+         LISGEOS_export(n)%znt = LIS_rc%udef
+         LISGEOS_export(n)%q1 = LIS_rc%udef
+         LISGEOS_export(n)%smc1 = LIS_rc%udef
+         LISGEOS_export(n)%smc2 = LIS_rc%udef
+         LISGEOS_export(n)%smc3 = LIS_rc%udef
+         LISGEOS_export(n)%smc4 = LIS_rc%udef
+         LISGEOS_export(n)%stc1 = LIS_rc%udef
+         LISGEOS_export(n)%stc2 = LIS_rc%udef
+         LISGEOS_export(n)%stc3 = LIS_rc%udef
+         LISGEOS_export(n)%stc4 = LIS_rc%udef
+         LISGEOS_export(n)%snocvr = LIS_rc%udef
+         LISGEOS_export(n)%snow = LIS_rc%udef
+         LISGEOS_export(n)%snowh = LIS_rc%udef
+         LISGEOS_export(n)%lispor = LIS_rc%udef
+         LISGEOS_export(n)%rootmoist = LIS_rc%udef
+         LISGEOS_export(n)%soilm = LIS_rc%udef
+         LISGEOS_export(n)%qs = LIS_rc%udef
+         LISGEOS_export(n)%qsb = LIS_rc%udef
+         LISGEOS_export(n)%cmc = LIS_rc%udef
+         LISGEOS_export(n)%qsm = LIS_rc%udef
+         LISGEOS_export(n)%emiss = LIS_rc%udef
+         LISGEOS_export(n)%xice = LIS_rc%udef
+         LISGEOS_export(n)%sh2o1 = LIS_rc%udef
+         LISGEOS_export(n)%sh2o2 = LIS_rc%udef
+         LISGEOS_export(n)%sh2o3 = LIS_rc%udef
+         LISGEOS_export(n)%sh2o4 = LIS_rc%udef
+         LISGEOS_export(n)%relsmc1 = LIS_rc%udef
+         LISGEOS_export(n)%relsmc2 = LIS_rc%udef
+         LISGEOS_export(n)%relsmc3 = LIS_rc%udef
+         LISGEOS_export(n)%relsmc4 = LIS_rc%udef
+         LISGEOS_export(n)%xland = LIS_rc%udef
+         LISGEOS_export(n)%chs2 = LIS_rc%udef
+         LISGEOS_export(n)%cqs2 = LIS_rc%udef
+
+         ! Export states - New GEOS Coupling 2D Grid Arrays
+         LISGEOS_export(n)%rhos = LIS_rc%udef
+         LISGEOS_export(n)%totalrunoff = LIS_rc%udef
+         LISGEOS_export(n)%qh_shout = LIS_rc%udef
+         LISGEOS_export(n)%ch_f = LIS_rc%udef
+         LISGEOS_export(n)%soilmoist_rz = LIS_rc%udef
+         LISGEOS_export(n)%qair_t2m = LIS_rc%udef
+         LISGEOS_export(n)%snowdepth_sca = LIS_rc%udef
+         LISGEOS_export(n)%roughness_f = LIS_rc%udef
+         LISGEOS_export(n)%albedovisdir = LIS_rc%udef
+         LISGEOS_export(n)%albedonirdir = LIS_rc%udef
+         LISGEOS_export(n)%albedovisdif = LIS_rc%udef
+         LISGEOS_export(n)%albedonirdif = LIS_rc%udef
+         LISGEOS_export(n)%z0 = LIS_rc%udef
+         LISGEOS_export(n)%zpd = LIS_rc%udef
+         LISGEOS_export(n)%ustarveg = LIS_rc%udef
+         LISGEOS_export(n)%ustarbare = LIS_rc%udef
+         LISGEOS_export(n)%taux = LIS_rc%udef
+         LISGEOS_export(n)%tauy = LIS_rc%udef
+         LISGEOS_export(n)%rtmass = LIS_rc%udef
+         LISGEOS_export(n)%stmass = LIS_rc%udef
+         LISGEOS_export(n)%wood = LIS_rc%udef
+         LISGEOS_export(n)%stblcp = LIS_rc%udef
+         LISGEOS_export(n)%fastcp = LIS_rc%udef
+         LISGEOS_export(n)%lai = LIS_rc%udef
+         LISGEOS_export(n)%sai = LIS_rc%udef
+
 #ifdef GEOS_HYDRO
          LISGEOS_export(n)%infxsrt_t = LIS_rc%udef
          LISGEOS_export(n)%soldrain_t = LIS_rc%udef
+         LISGEOS_export(n)%infxsrt = LIS_rc%udef
+         LISGEOS_export(n)%soldrain = LIS_rc%udef
 #endif
 #ifdef PARFLOW
          LISGEOS_export(n)%wtrflx1_t = LIS_rc%udef
          LISGEOS_export(n)%wtrflx2_t = LIS_rc%udef
          LISGEOS_export(n)%wtrflx3_t = LIS_rc%udef
          LISGEOS_export(n)%wtrflx4_t = LIS_rc%udef
+         LISGEOS_export(n)%wtrflx1 = LIS_rc%udef
+         LISGEOS_export(n)%wtrflx2 = LIS_rc%udef
+         LISGEOS_export(n)%wtrflx3 = LIS_rc%udef
+         LISGEOS_export(n)%wtrflx4 = LIS_rc%udef
 #endif
       enddo
     end subroutine LISGEOS_reset_states
+
+    subroutine LISGEOS_dealloc_states
+      use LIS_coreMod, only : LIS_rc
+      implicit none
+      integer :: n
+
+      if (allocated(LISGEOS_import)) then
+         deallocate(LISGEOS_import)
+      endif
+
+      if (allocated(LISGEOS_export)) then
+         deallocate(LISGEOS_export)
+      endif
+    end subroutine LISGEOS_dealloc_states
 
 end module LISGEOSGridCompMod

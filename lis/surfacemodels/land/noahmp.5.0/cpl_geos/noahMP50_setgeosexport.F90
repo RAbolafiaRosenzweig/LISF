@@ -260,25 +260,25 @@ subroutine NoahMP50_setgeosexport(n)
 
   ! Friction Velocity - Vegetated (UstarVeg)
   do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
-     temp(i) = NoahMP50_struc(n)%noahmp50(i)%ustarv
+     temp(i) = NoahMP50_struc(n)%noahmp50(i)%ustarveg
   enddo
   call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%ustarveg_t,temp)
 
   ! Friction Velocity - Bare Soil (UstarBare)
   do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
-     temp(i) = NoahMP50_struc(n)%noahmp50(i)%ustarb
+     temp(i) = NoahMP50_struc(n)%noahmp50(i)%ustarbare
   enddo
   call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%ustarbare_t,temp)
 
   ! Root Mass (rtmass)
   do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
-     temp(i) = NoahMP50_struc(n)%noahmp50(i)%m_root
+     temp(i) = NoahMP50_struc(n)%noahmp50(i)%rtmass
   enddo
   call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%rtmass_t,temp)
 
   ! Stem Mass (stmass)
   do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
-     temp(i) = NoahMP50_struc(n)%noahmp50(i)%m_stem
+     temp(i) = NoahMP50_struc(n)%noahmp50(i)%stmass
   enddo
   call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%stmass_t,temp)
 
@@ -290,13 +290,13 @@ subroutine NoahMP50_setgeosexport(n)
 
   ! Stable Carbon Pool (stblcp)
   do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
-     temp(i) = NoahMP50_struc(n)%noahmp50(i)%csoil
+     temp(i) = NoahMP50_struc(n)%noahmp50(i)% stblcp
   enddo
   call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%stblcp_t,temp)
 
   ! Fast Carbon Pool (fastcp)
   do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
-     temp(i) = NoahMP50_struc(n)%noahmp50(i)%cwood
+     temp(i) = NoahMP50_struc(n)%noahmp50(i)%fastcp
   enddo
   call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%fastcp_t,temp)
 

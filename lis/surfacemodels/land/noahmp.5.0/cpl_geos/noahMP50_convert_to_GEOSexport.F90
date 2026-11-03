@@ -74,10 +74,10 @@ subroutine NoahMP50_convert_to_GEOSexport(n)
         ! --- band-resolved albedo: direct SELECT from harvested native
         !     arrays (1=vis, 2=nir). Requires nm%albd(:)/nm%albi(:) to be
         !     populated in NoahMP50_main (see note). ---
-        gx%albedo_dir(1) = nm%albd(1)   ! AlbedoVisDir
-        gx%albedo_dir(2) = nm%albd(2)   ! AlbedoNIRDir
-        gx%albedo_dif(1) = nm%albi(1)   ! AlbedoVisDif
-        gx%albedo_dif(2) = nm%albi(2)   ! AlbedoNIRDif
+        gx%albedo_dir(1) = nm%albsfcdir(1)   ! AlbedoVisDir
+        gx%albedo_dir(2) = nm%albsfcdir(2)   ! AlbedoNIRDir
+        gx%albedo_dif(1) = nm%albsfcdif(1)   ! AlbedoVisDif
+        gx%albedo_dif(2) = nm%albsfcdif(2)   ! AlbedoNIRDif
 
      end associate
   enddo
