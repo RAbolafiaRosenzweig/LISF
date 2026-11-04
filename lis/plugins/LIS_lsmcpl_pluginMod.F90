@@ -79,7 +79,7 @@ contains
   subroutine LIS_lsmcpl_plugin
 !EOP
 
-#if ( defined RM_WRF_COUPLING )
+#if ( defined RM_WRF_COUPLING ) || ( defined RM_GEOS_COUPLING )
     use LIS_pluginIndices
 
     external :: registerlsmf2t

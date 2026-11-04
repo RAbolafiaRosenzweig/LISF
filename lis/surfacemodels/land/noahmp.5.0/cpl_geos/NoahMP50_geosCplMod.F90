@@ -16,6 +16,8 @@ module NoahMP50_geosCplMod
      real          :: ch_f           ! fveg-weighted exchange coeff [s/m]
      real          :: soilmoist_rz   ! depth-weighted root-zone SM  [m3/m3]
      real          :: qair_t2m       ! fveg-weighted 2m spec. hum.  [kg/kg]
+     real          :: tair_t2m       ! fveg-weighted 2m air temp    [K]
+     real          :: canopint       ! canliq + canice              [kg/m2]
      real          :: snowdepth_sca  ! snowh/snowc (SCA form)       [m]
      real          :: roughness_f    ! z0 (also feeds Z0H)          [m]
      ! band-resolved albedo (1=vis, 2=nir); harvested from NoahmpIO in main
@@ -32,10 +34,13 @@ module NoahMP50_geosCplMod
 contains
 
   subroutine NoahMP50_geoscpl_init(n)
+    ! Idempotent: safe to call every coupling step. Only allocates this
+    ! nest's tile(:) store the first time it is invoked.
     integer, intent(in) :: n
     integer :: t, npatch
     if (.not. allocated(NoahMP50_geoscpl)) &
          allocate(NoahMP50_geoscpl(LIS_rc%nnest))
+    if (allocated(NoahMP50_geoscpl(n)%tile)) return
     npatch = LIS_rc%npatch(n, LIS_rc%lsm_index)
     allocate(NoahMP50_geoscpl(n)%tile(npatch))
     do t = 1, npatch

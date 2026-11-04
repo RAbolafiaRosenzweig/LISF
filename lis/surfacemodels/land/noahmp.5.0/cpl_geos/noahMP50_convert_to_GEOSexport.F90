@@ -60,6 +60,12 @@ subroutine NoahMP50_convert_to_GEOSexport(n)
         ! --- 2m specific humidity (fveg-weighted) ---
         gx%qair_t2m = fveg*nm%q2mv + (1.0-fveg)*nm%q2mb
 
+        ! --- 2m air temperature (fveg-weighted) ---
+        gx%tair_t2m = fveg*nm%t2mv + (1.0-fveg)*nm%t2mb
+
+        ! --- canopy water content ---
+        gx%canopint = nm%canliq + nm%canice
+
         ! --- snow depth, snow-covered-area form (guard snowc=0) ---
         snc = nm%snowc
         if (snc > EPS) then

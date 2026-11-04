@@ -34,10 +34,33 @@ subroutine NoahMP50_setgeosexport(n)
 
   allocate(temp(LIS_rc%npatch(n,LIS_rc%lsm_index)))
 
+  ! Ensure the GEOS-coupling derived-variable store is allocated, then
+  ! refresh it from the latest NoahMP state (idempotent allocation; safe
+  ! to call every coupling step).
+  call NoahMP50_geoscpl_init(n)
+  call NoahMP50_convert_to_GEOSexport(n)
 
   ! =====================================================================
   ! 1. BASELINE VARIABLES (Carried over from original WRF coupling)
   ! =====================================================================
+
+  ! Surface Temperature
+  do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
+     temp(i) = NoahMP50_struc(n)%noahmp50(i)%tg
+  enddo
+  call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%avgsurft_t,temp)
+
+  ! Emissivity
+  do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
+     temp(i) = NoahMP50_struc(n)%noahmp50(i)%emiss
+  enddo
+  call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%emiss_t,temp)
+
+  ! Latent Heat Flux
+  do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
+     temp(i) = NoahMP50_struc(n)%noahmp50(i)%lh
+  enddo
+  call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%qle_t,temp)
 
   ! Surface Albedo
   do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
@@ -205,6 +228,18 @@ subroutine NoahMP50_setgeosexport(n)
   enddo
   call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%albedonirdif_t,temp)
 
+  ! 2m Air Temperature (tair_t2m)
+  do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
+     temp(i) = NoahMP50_geoscpl(n)%tile(i)%tair_t2m
+  enddo
+  call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%tair_t2m_t,temp)
+
+  ! Canopy Water Content (canopint)
+  do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
+     temp(i) = NoahMP50_geoscpl(n)%tile(i)%canopint
+  enddo
+  call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%canopint_t,temp)
+
 
   ! =====================================================================
   ! 3. NATIVE VARIABLES (From NoahMP50_struc)
@@ -311,6 +346,38 @@ subroutine NoahMP50_setgeosexport(n)
      temp(i) = NoahMP50_struc(n)%noahmp50(i)%sai
   enddo
   call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%sai_t,temp)
+
+  ! Total Evapotranspiration (evap)
+  do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
+     temp(i) = NoahMP50_struc(n)%noahmp50(i)%qfx
+  enddo
+  call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%evap_t,temp)
+
+  ! Greenness Fraction (greenness)
+  do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
+     temp(i) = NoahMP50_struc(n)%noahmp50(i)%fveg
+  enddo
+  call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%greenness_t,temp)
+
+  ! Vegetation/Land Cover Type (landcover)
+  ! Raw NoahMP vegetation-type passthrough; no NoahMP->CLSM land-cover
+  ! category remap table exists yet, so this is exported unconverted.
+  do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
+     temp(i) = real(NoahMP50_struc(n)%noahmp50(i)%vegetype)
+  enddo
+  call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%landcover_t,temp)
+
+  ! Net Ecosystem Exchange (nee)
+  do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
+     temp(i) = NoahMP50_struc(n)%noahmp50(i)%nee
+  enddo
+  call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%nee_t,temp)
+
+  ! Mean Surface Specific Humidity (avgsurfq)
+  do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index)
+     temp(i) = NoahMP50_struc(n)%noahmp50(i)%qsfcmean
+  enddo
+  call LIS_patch2tile(n,LIS_rc%lsm_index,LISGEOS_export(n)%avgsurfq_t,temp)
 
   deallocate(temp)
 

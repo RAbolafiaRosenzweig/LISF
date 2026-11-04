@@ -91,6 +91,13 @@ module LISGEOSexport_module
      real, allocatable :: fastcp(:,:)
      real, allocatable :: lai(:,:)
      real, allocatable :: sai(:,:)
+     real, allocatable :: evap(:,:)
+     real, allocatable :: greenness(:,:)
+     real, allocatable :: landcover(:,:)
+     real, allocatable :: nee(:,:)
+     real, allocatable :: avgsurfq(:,:)
+     real, allocatable :: canopint(:,:)
+     real, allocatable :: tair_t2m(:,:)
 
      ! --- Standard/Original LIS 1D Tile Arrays ---
      real, allocatable :: avgsurft_t(:)
@@ -159,6 +166,13 @@ module LISGEOSexport_module
      real, allocatable :: fastcp_t(:)
      real, allocatable :: lai_t(:)
      real, allocatable :: sai_t(:)
+     real, allocatable :: evap_t(:)
+     real, allocatable :: greenness_t(:)
+     real, allocatable :: landcover_t(:)
+     real, allocatable :: nee_t(:)
+     real, allocatable :: avgsurfq_t(:)
+     real, allocatable :: canopint_t(:)
+     real, allocatable :: tair_t2m_t(:)
 
 #ifdef GEOS_HYDRO
      real, allocatable :: infxsrt(:,:)

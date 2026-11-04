@@ -138,6 +138,13 @@ module LISGEOSGridCompMod
          allocate(LISGEOS_export(n)%fastcp_t(LIS_rc%ntiles(n)))
          allocate(LISGEOS_export(n)%lai_t(LIS_rc%ntiles(n)))
          allocate(LISGEOS_export(n)%sai_t(LIS_rc%ntiles(n)))
+         allocate(LISGEOS_export(n)%evap_t(LIS_rc%ntiles(n)))
+         allocate(LISGEOS_export(n)%greenness_t(LIS_rc%ntiles(n)))
+         allocate(LISGEOS_export(n)%landcover_t(LIS_rc%ntiles(n)))
+         allocate(LISGEOS_export(n)%nee_t(LIS_rc%ntiles(n)))
+         allocate(LISGEOS_export(n)%avgsurfq_t(LIS_rc%ntiles(n)))
+         allocate(LISGEOS_export(n)%canopint_t(LIS_rc%ntiles(n)))
+         allocate(LISGEOS_export(n)%tair_t2m_t(LIS_rc%ntiles(n)))
 
          ! Export states - 2D Grid Arrays
          allocate(LISGEOS_export(n)%avgsurft(LIS_rc%lnc(n),LIS_rc%lnr(n)))
@@ -206,6 +213,13 @@ module LISGEOSGridCompMod
          allocate(LISGEOS_export(n)%fastcp(LIS_rc%lnc(n),LIS_rc%lnr(n)))
          allocate(LISGEOS_export(n)%lai(LIS_rc%lnc(n),LIS_rc%lnr(n)))
          allocate(LISGEOS_export(n)%sai(LIS_rc%lnc(n),LIS_rc%lnr(n)))
+         allocate(LISGEOS_export(n)%evap(LIS_rc%lnc(n),LIS_rc%lnr(n)))
+         allocate(LISGEOS_export(n)%greenness(LIS_rc%lnc(n),LIS_rc%lnr(n)))
+         allocate(LISGEOS_export(n)%landcover(LIS_rc%lnc(n),LIS_rc%lnr(n)))
+         allocate(LISGEOS_export(n)%nee(LIS_rc%lnc(n),LIS_rc%lnr(n)))
+         allocate(LISGEOS_export(n)%avgsurfq(LIS_rc%lnc(n),LIS_rc%lnr(n)))
+         allocate(LISGEOS_export(n)%canopint(LIS_rc%lnc(n),LIS_rc%lnr(n)))
+         allocate(LISGEOS_export(n)%tair_t2m(LIS_rc%lnc(n),LIS_rc%lnr(n)))
 
 #ifdef GEOS_HYDRO
          allocate(LISGEOS_export(n)%infxsrt_t(LIS_rc%ntiles(n)))
@@ -321,6 +335,13 @@ module LISGEOSGridCompMod
          LISGEOS_export(n)%fastcp_t = LIS_rc%udef
          LISGEOS_export(n)%lai_t = LIS_rc%udef
          LISGEOS_export(n)%sai_t = LIS_rc%udef
+         LISGEOS_export(n)%evap_t = LIS_rc%udef
+         LISGEOS_export(n)%greenness_t = LIS_rc%udef
+         LISGEOS_export(n)%landcover_t = LIS_rc%udef
+         LISGEOS_export(n)%nee_t = LIS_rc%udef
+         LISGEOS_export(n)%avgsurfq_t = LIS_rc%udef
+         LISGEOS_export(n)%canopint_t = LIS_rc%udef
+         LISGEOS_export(n)%tair_t2m_t = LIS_rc%udef
 
          ! Export states - 2D Grid Arrays
          LISGEOS_export(n)%avgsurft = LIS_rc%udef
@@ -389,6 +410,13 @@ module LISGEOSGridCompMod
          LISGEOS_export(n)%fastcp = LIS_rc%udef
          LISGEOS_export(n)%lai = LIS_rc%udef
          LISGEOS_export(n)%sai = LIS_rc%udef
+         LISGEOS_export(n)%evap = LIS_rc%udef
+         LISGEOS_export(n)%greenness = LIS_rc%udef
+         LISGEOS_export(n)%landcover = LIS_rc%udef
+         LISGEOS_export(n)%nee = LIS_rc%udef
+         LISGEOS_export(n)%avgsurfq = LIS_rc%udef
+         LISGEOS_export(n)%canopint = LIS_rc%udef
+         LISGEOS_export(n)%tair_t2m = LIS_rc%udef
 
 #ifdef GEOS_HYDRO
          LISGEOS_export(n)%infxsrt_t = LIS_rc%udef
