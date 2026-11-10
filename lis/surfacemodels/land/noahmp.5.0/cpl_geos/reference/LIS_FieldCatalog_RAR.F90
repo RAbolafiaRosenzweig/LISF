@@ -133,16 +133,20 @@ LIS_Field( &
                 directConn=.false.), &
 
 LIS_Field( &
-                stdName='heat_exchange_coefficient_in_air', & ! Noah-MP: ExchCoeffShSfc , ExchCoeffMomSfc (assumed equal)
-                stateName='ch_f', &						! NoahMP50_struc(n)%noahmp50(t)%chb & NoahMP50_struc(n)%noahmp50(t)%chv
-                units='s/m', &						! (maps to many | CQT, CNT, and CHT) / CT(surface_exchange_coefficient_for_heat), CQ(surface_exchange_coefficient_for_moisture), CM(surface_exchange_coefficient_for_momentum)
-                adImport=.false., &						! conversion needed with fveg weighting if fveg>0: VegFrac * ExchCoeffShAbvCan   + (1.0 - VegFrac) * ExchCoeffShBare
-                adExport=.true., &					! if fveg = 0 then ExchCoeffShSfc          = ExchCoeffShBare
+                stdName='heat_exchange_coefficient_in_air', & ! Noah-MP: ExchCoeffShSfc 
+                stateName='ch_f', &						! NoahMP50_struc(n)%noahmp50(t)%ch
+                units='s/m', &						! (maps to GEOS heat and momentum exchange coefficients: CT(surface_exchange_coefficient_for_heat), CQ(surface_exchange_coefficient_for_moisture)
+                adImport=.false., &					
+                adExport=.true., &					
+                directConn=.false.), &
+LIS_Field( &
+                stdName='momentum_exchange_coefficient_in_air', & ! Noah-MP: ExchCoeffMomSfc      
+                stateName='cm_f', &						! NoahMP50_struc(n)%noahmp50(t)%cm
+                units='s/m', &						
+                adImport=.false., &					
+                adExport=.true., &					
                 directConn=.false.), &
 
-!!==============================================================================================================================
-!!-------------did not find these variable names from the LIS side (talk to Jim) start--------------------------------------------
-!!==============================================================================================================================
 !! --- 2-Meter Specific Humidity ---
 LIS_Field( &
                 stdName='2m_specific_humidity', &      ! Noah-MP: SpecificHumidity2m (Derived from CLSM Q2M)
@@ -244,9 +248,6 @@ LIS_Field( &
                 adImport=.false., &
                 adExport=.true., &
                 directConn=.false.), &
-!!==============================================================================================================================
-!!-------------did not find these variable names from the LIS side (talk to Jim) end--------------------------------------------
-!!==============================================================================================================================
 
 !!=========================================================================================
 !! Met Forcings Imports 

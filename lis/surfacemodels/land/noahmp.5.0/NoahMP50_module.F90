@@ -381,6 +381,8 @@ module NoahMP50_module
 !     surface albedo, direct beam (1=visible, 2=near-infrared). unit: -
 !   \item[albsfcdif]
 !     surface albedo, diffuse (1=visible, 2=near-infrared). unit: -
+!   \item[soiltimestep]
+!     Noah-MP soil timestep. unit: s
 !   \end{description}
 !
 ! !REVISION HISTORY:
@@ -584,6 +586,7 @@ module NoahMP50_module
      real               :: tauy
      real               :: rhoair
      real               :: qsfcmean
+     integer            :: soiltimestep
      real, pointer      :: albsfcdir(:)   ! surface albedo direct  (1=vis, 2=nir)
      real, pointer      :: albsfcdif(:)   ! surface albedo diffuse (1=vis, 2=nir) 
 

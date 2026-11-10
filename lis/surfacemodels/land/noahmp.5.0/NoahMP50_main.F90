@@ -580,6 +580,7 @@ subroutine NoahMP50_main(n)
         NoahMP50_struc(n)%noahmp50(t)%qsfcmean   = NoahmpIO%qsfc(1,1)
         NoahMP50_struc(n)%noahmp50(t)%albsfcdir(:) = NoahmpIO%ALBSFCDIRXY(1,:,1)
         NoahMP50_struc(n)%noahmp50(t)%albsfcdif(:) = NoahmpIO%ALBSFCDIFXY(1,:,1)
+        NoahMP50_struc(n)%noahmp50(t)%soiltimestep    = NoahmpIO%soiltimestepxy(1,1)
 
         ! additional accumulated variables
         NoahMP50_struc(n)%noahmp50(t)%accssoil     = NoahmpIO%ACC_SSOILXY(1,1)
