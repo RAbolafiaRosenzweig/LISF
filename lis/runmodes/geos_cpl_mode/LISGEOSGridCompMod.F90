@@ -17,7 +17,7 @@ module LISGEOSGridCompMod
 !   LIS and GEOS. 
 ! 
 ! !REVISION HISTORY: 
-! 9 Nov 2008: Sujay Kumar, Initial Specification
+! 9 Nov 2026: Ronnie Abolafia-Rosenzweig, Initial Specification
 !
 ! !USES: 
   use LISGEOSimport_module

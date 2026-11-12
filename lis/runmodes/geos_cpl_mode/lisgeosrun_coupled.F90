@@ -13,11 +13,7 @@ subroutine lisgeosrun_coupled(n)
 ! !ROUTINE: lisgeosrun_coupled
 ! 
 ! !REVISION HISTORY: 
-! 14Nov02    Sujay Kumar  Initial Specification
-! 21Oct05    Sujay Kumar  Modified to include the runmodes.
-!                         Switched to a init,run,finalize mode
-! July12     C. Carouge   Modified to include CO2 as import.
-!                         Plus fix for nested domains.
+! 9 Nov 2026: Ronnie Abolafia-Rosenzweig, Initial Specification
 ! !USES: 
   use ESMF
   use LISGEOSGridCompMod

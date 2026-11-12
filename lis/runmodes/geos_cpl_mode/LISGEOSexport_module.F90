@@ -16,7 +16,7 @@ module LISGEOSexport_module
 !   Defines the export state variables from LIS
 ! 
 ! !REVISION HISTORY: 
-! 9 Nov 2005: Sujay Kumar, Initial Specification
+! 9 Nov 2026: Ronnie Abolafia-Rosenzweig, Initial Specification
 !
 ! !USES: 
 !EOP

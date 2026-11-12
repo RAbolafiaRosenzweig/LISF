@@ -12,9 +12,8 @@ subroutine lisgeosinit_coupled(nx,ny,geos_mpi_comm_compute_tasks)
 ! !ROUTINE: lisgeosinit_coupled
 ! 
 !  !REVISION HISTORY: 
-!  14Nov02    Sujay Kumar  Initial Specification
-!  21Oct05    Sujay Kumar  Modified to include the runmodes. Switched
-!                          to a init,run,finalize mode
+!  9 Nov 2026: Ronnie Abolafia-Rosenzweig, Initial Specification
+
 ! !USES: 
   use LIS_coreMod
   use LIS_domainMod,       only : LIS_domain_init

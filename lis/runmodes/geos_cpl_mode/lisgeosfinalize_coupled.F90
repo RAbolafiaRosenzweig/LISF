@@ -13,7 +13,7 @@ subroutine lisgeosfinalize_coupled()
 ! !ROUTINE: lisgeosfinalize_coupled
 ! 
 ! !REVISION HISTORY: 
-! 14 Aug 2014  James Geiger  Initial Specification
+! 9 Nov 2026  Ronnie Abolafia-Rosenzweig  Initial Specification
 ! !USES: 
   use LISGEOSGridCompMod,     only : LISGEOS_import
   use LIS_coreMod,           only : LIS_rc
